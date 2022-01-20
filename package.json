@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp-api-git",
+  "version": "1.0.0",
+  "description": "mo-whatsapp-api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jayesh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "fs": "0.0.1-security",
+    "venom-bot": "^4.0.5"
+  }
+}
