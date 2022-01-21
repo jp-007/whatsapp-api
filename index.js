@@ -91,17 +91,22 @@ app.get('/', function (req, res) {
 
 app.get('/scan', function (req, res) {
                 var page = `
-                    <html>
-                        <body>
-                            <div id="qrcode"></div>
-                            <img src="http://localhost:8081/out.png">
-                        </body>
-                        <script>
-                        setInterval(function() {
-                          location.reload();
-                        }, 5000);
-                        </script>
-                    </html>
+                <html>
+                <body style="background-color:green">
+                    <div id="qrcode" style="display:flex;justify-content:center;align-item:center;margin:10% auto;background-color:green">
+                      <div style="display:flex;flex-direction:column; align-items:center;justify-content:center;padding:20px;background-color:white">
+                        <img src="http://${req.headers.host}/out.png" "height=300" width="300px">
+                        <br>
+                        <div>Please scan this QR with your whatsapp account (whatsapp need to support multi-device)</div>
+                      </div>
+                    </div>
+                </body>
+                <script>
+                setInterval(function() {
+                  location.reload();
+                }, 5000);
+                </script>
+            </html>
                 `
                 res.write(page)
                 res.end();
