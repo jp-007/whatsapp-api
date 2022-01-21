@@ -16,52 +16,52 @@ let client=null;
 //       return client;
 // }
 
-// venom.create({
-//         session: 'session-name', //name of session
-//         multidevice: false // for version not multidevice use false.(default: true)
-//       })
-//   .then((client) => start(client))
-//   .catch((erro) => {
-//     console.log(erro);
-//   });
-// venom
-//   .create(
-//     'sessionName',
-//     (base64Qr, asciiQR, attempts, urlCode) => {
-//       console.log(asciiQR); // Optional to log the QR in the terminal
-//       var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
-//         response = {};
+venom.create({
+        session: 'session-name', //name of session
+        multidevice: false // for version not multidevice use false.(default: true)
+      })
+  .then((client) => start(client))
+  .catch((erro) => {
+    console.log(erro);
+  });
+venom
+  .create(
+    'sessionName',
+    (base64Qr, asciiQR, attempts, urlCode) => {
+      console.log(asciiQR); // Optional to log the QR in the terminal
+      var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+        response = {};
 
-//       if (matches.length !== 3) {
-//         return new Error('Invalid input string');
-//       }
-//       response.type = matches[1];
-//       response.data = new Buffer.from(matches[2], 'base64');
+      if (matches.length !== 3) {
+        return new Error('Invalid input string');
+      }
+      response.type = matches[1];
+      response.data = new Buffer.from(matches[2], 'base64');
 
-//       var imageBuffer = response;
+      var imageBuffer = response;
       
-//       require('fs').writeFile(
-//         __dirname+'/public/out.png',
-//         imageBuffer['data'],
-//         'binary',
-//         function (err) {
-//           if (err != null) {
-//             console.log(err);
-//           }
-//         }
-//       );
-//       // res.send("SUCCESS")
+      require('fs').writeFile(
+        __dirname+'/public/out.png',
+        imageBuffer['data'],
+        'binary',
+        function (err) {
+          if (err != null) {
+            console.log(err);
+          }
+        }
+      );
+      // res.send("SUCCESS")
       
-//     },
-//     undefined,
-//     { logQR: false }
-//   )
-//   .then((client1) => {
-//     client=client1;
-//   })
-//   .catch((erro) => {
-//     console.log(erro);
-//   });
+    },
+    undefined,
+    { logQR: false }
+  )
+  .then((client1) => {
+    client=client1;
+  })
+  .catch((erro) => {
+    console.log(erro);
+  });
 
 
 
